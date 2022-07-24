@@ -17,10 +17,10 @@ const Minter = (props) => {
     window.ethereum.on("accountsChanged", (accounts) => {
       if (accounts.length > 0) {
         setWallet(accounts[0]);
-        setStatus("👆🏽 Write a message in the text-field above.");
+        setStatus(" Write a message in the text-field above.");
       } else {
         setWallet("");
-        setStatus("🦊 Connect to Metamask using the top right button.");
+        setStatus(" Connect to Metamask.");
       }
     });
   } else {
@@ -75,23 +75,18 @@ const onMintPressed = async () => {
       </button>
 
       <br></br>
-      <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
-      <p>
-        Simply add your asset's link, name, and description, then press "Mint."
-      </p>
+      <h1 id="title"> NFT Minter </h1>
       <form>
-        <h2>🖼 Link to asset: </h2>
+        <h2>Upload Image: </h2>
         <input type="file" onChange={(event) => setImage(event.target.files[0])} required />
-        <h2>🤔 Name: </h2>
+        <h2>The Name of the NFT: </h2>
         <input
           type="text"
-          placeholder="e.g. My first NFT!"
           onChange={(event) => setName(event.target.value)}
         />
-        <h2>✍️ Description: </h2>
+        <h2>The Description of the NFT: </h2>
         <input
           type="text"
-          placeholder="e.g. Even cooler than cryptokitties ;)"
           onChange={(event) => setDescription(event.target.value)}
         />
       </form>
