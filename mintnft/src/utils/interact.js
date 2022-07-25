@@ -66,6 +66,7 @@ export const mintNFT = async(image, name, description) => {
         NFTname: metadata.name,
         NFTurl: metadata.url,
         NFTdescription: metadata.description,
+        txHash: txHash,
     }
  } catch (error) {
     return {
@@ -73,6 +74,7 @@ export const mintNFT = async(image, name, description) => {
         NFTname: "None",
         NFTurl: "None",
         NFTdescription: "None",
+        txHash: "None",
     }
  }
 

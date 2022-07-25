@@ -54,7 +54,7 @@ const Minter = (props) => {
 
   const onMintPressed = async () => {
 
-  const { success, NFTname, NFTurl, NFTdescription } = await mintNFT(image, name, description);
+  const { success, NFTname, NFTurl, NFTdescription, txHash } = await mintNFT(image, name, description);
   
   if (success) {
       navigate('/display', {
@@ -62,6 +62,7 @@ const Minter = (props) => {
           NFTname: NFTname,
           NFTurl: NFTurl,
           NFTdescription: NFTdescription,
+          txURL: "https://goerli.etherscan.io/tx/" + txHash, 
         }
       });
   };
