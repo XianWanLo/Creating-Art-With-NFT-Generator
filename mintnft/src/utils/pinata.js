@@ -10,12 +10,6 @@ export const pinFileToIPFS = async(imageFile) => {
     let data = new FormData();
     data.append("file", imageFile);
     return axios
-//        .post(url, file, {
-//            headers: {
-//                pinata_api_key: key,
-//                pinata_secret_api_key: secret,
-//            }
-//        })
         .post(url, data, {
             maxBodyLength: 'Infinity',
             headers: {

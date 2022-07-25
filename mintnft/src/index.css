@@ -53,6 +53,10 @@ button {
   cursor:pointer;
 }
 
+#image {
+  width: 500px;
+}
+
 #title {
   padding-top: 32px;
 }
@@ -80,3 +84,5 @@ button {
   background-color: #9269C3;
   color:white;
 }
+
+

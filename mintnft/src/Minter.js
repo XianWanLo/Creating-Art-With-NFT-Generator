@@ -1,7 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { connectWallet, getCurrentWalletConnected, mintNFT } from "./utils/interact.js";
+import { useNavigate} from "react-router-dom";
 
 const Minter = (props) => {
+  const navigate = useNavigate();
 
   //State variables
   const [walletAddress, setWallet] = useState("");
@@ -37,12 +39,12 @@ const Minter = (props) => {
   }
 }
  
-    useEffect(async () => {
-        const {address, status} = await getCurrentWalletConnected();
-        setWallet(address)
-        setStatus(status);
-        addWalletListener();
-    }, []);
+  useEffect(async () => {
+      const {address, status} = await getCurrentWalletConnected();
+      setWallet(address)
+      setStatus(status);
+      addWalletListener();
+  }, []);
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
@@ -50,16 +52,22 @@ const Minter = (props) => {
     setWallet(walletResponse.address);
   };
 
-const onMintPressed = async () => {
-//    let formData = new FormData()
-//    formData.append('file', url.data)
-//    const response = await fetch('http://localhost:5000/image', {
-//      method: 'POST',
-//      body: formData,
-//    })
-    const { status } = await mintNFT(image, name, description);
-    setStatus(status);
-};
+  const onMintPressed = async () => {
+
+  const { success, NFTname, NFTurl, NFTdescription } = await mintNFT(image, name, description);
+  
+  if (success) {
+      navigate('/display', {
+        state: {
+          NFTname: NFTname,
+          NFTurl: NFTurl,
+          NFTdescription: NFTdescription,
+        }
+      });
+  };
+  
+
+  };
 
   return (
     <div className="Minter">
